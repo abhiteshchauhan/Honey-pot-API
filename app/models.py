@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 # --- Incoming Message (from Mock Scammer API) ---
@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field
 
 class MessageEvent(BaseModel):
     """Incoming message event from the Mock Scammer API."""
-
+    model_config = ConfigDict(extra="allow")
     conversation_id: Optional[str] = Field(default="conversation_id",description="Unique identifier for the conversation")
     message: str = Field(..., description="The message content")
     sender: Optional[str] = Field(default="scammer", description="Sender identifier")

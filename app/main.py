@@ -57,7 +57,7 @@ async def handle_message(
     Detects scam intent, hands off to the autonomous agent when detected,
     and returns structured response with extracted intelligence.
     """
-    cid = event.conversation_id
+    cid = event.conversation_id or "conversation_id"
     message = event.message.strip()
     if not message:
         raise HTTPException(status_code=400, detail="Message cannot be empty")
