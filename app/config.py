@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
 
     # Agent configuration
-    model: str = "gpt-4o-mini"
+    model: str = "gpt-5.1"
     max_conversation_turns: int = 50
 
     class Config:
