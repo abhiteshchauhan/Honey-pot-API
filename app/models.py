@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 class MessageEvent(BaseModel):
     """Incoming message event from the Mock Scammer API."""
 
-    
+    conversation_id: Optional[str] = Field(default="conversation_id",description="Unique identifier for the conversation")
     message: str = Field(..., description="The message content")
     sender: Optional[str] = Field(default="scammer", description="Sender identifier")
     timestamp: Optional[str] = Field(default=None, description="Message timestamp")
@@ -52,4 +52,5 @@ class HoneyPotResponse(BaseModel):
     response_message: str = Field(..., description="The message to send back to the scammer")
     engagement_metrics: EngagementMetrics = Field(default_factory=EngagementMetrics)
     extracted_intelligence: ExtractedIntelligence = Field(default_factory=ExtractedIntelligence)
+    conversation_id: Optional[str] = Field(..., description="Conversation identifier")
     timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")

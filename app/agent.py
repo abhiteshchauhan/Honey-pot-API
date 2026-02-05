@@ -75,7 +75,7 @@ class HoneyPotAgent:
 
     def generate_response(
         self,
-        
+        conversation_id: str,
         scammer_message: str,
         existing_intelligence: ExtractedIntelligence,
     ) -> tuple[str, ExtractedIntelligence, EngagementMetrics]:
